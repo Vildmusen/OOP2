@@ -17,7 +17,7 @@ namespace CustomCollections
 
         private void List_BeforeChange<T>(object sender, RejectArgs<T> e)
         {
-            bool checkValue = true;
+            bool checkValue = false;
             if (checkValue)
             {
                 e.RejectOperation();
