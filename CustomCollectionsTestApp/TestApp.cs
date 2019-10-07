@@ -27,7 +27,7 @@ namespace CustomCollectionsTestApp
             listener = new Listener();
             listener.Subscribe(list);
         }
-        
+
         private void add_btn_Click(object sender, EventArgs e)
         {
             list.Add(input_txt.Text);
@@ -50,7 +50,7 @@ namespace CustomCollectionsTestApp
 
         private void reject_chk_CheckedChanged(object sender, EventArgs e)
         {
-            if(reject_chk.Checked)
+            if (reject_chk.Checked)
             {
                 listener.isRejecting = true;
             }
