@@ -11,3 +11,17 @@ C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollectionsTestApp\obj\D
 C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollectionsTestApp\obj\Debug\CustomCollectionsTestApp.csproj.CopyComplete
 C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollectionsTestApp\obj\Debug\CustomCollectionsTestApp.exe
 C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollectionsTestApp\obj\Debug\CustomCollectionsTestApp.pdb
+C:\Users\vikto\Documents\repos\OOP2\CustomCollectionsTestApp\bin\Debug\CustomCollectionsTestApp.exe.config
+C:\Users\vikto\Documents\repos\OOP2\CustomCollectionsTestApp\bin\Debug\CustomCollectionsTestApp.exe
+C:\Users\vikto\Documents\repos\OOP2\CustomCollectionsTestApp\bin\Debug\CustomCollectionsTestApp.pdb
+C:\Users\vikto\Documents\repos\OOP2\CustomCollectionsTestApp\bin\Debug\CustomCollections.dll
+C:\Users\vikto\Documents\repos\OOP2\CustomCollectionsTestApp\bin\Debug\CustomDatastructures.Core.dll
+C:\Users\vikto\Documents\repos\OOP2\CustomCollectionsTestApp\bin\Debug\CustomCollections.pdb
+C:\Users\vikto\Documents\repos\OOP2\CustomCollectionsTestApp\obj\Debug\CustomCollectionsTestApp.csprojAssemblyReference.cache
+C:\Users\vikto\Documents\repos\OOP2\CustomCollectionsTestApp\obj\Debug\CustomCollectionsTestApp.Properties.Resources.resources
+C:\Users\vikto\Documents\repos\OOP2\CustomCollectionsTestApp\obj\Debug\CustomCollectionsTestApp.TestApp.resources
+C:\Users\vikto\Documents\repos\OOP2\CustomCollectionsTestApp\obj\Debug\CustomCollectionsTestApp.csproj.GenerateResource.cache
+C:\Users\vikto\Documents\repos\OOP2\CustomCollectionsTestApp\obj\Debug\CustomCollectionsTestApp.csproj.CoreCompileInputs.cache
+C:\Users\vikto\Documents\repos\OOP2\CustomCollectionsTestApp\obj\Debug\CustomCollectionsTestApp.csproj.CopyComplete
+C:\Users\vikto\Documents\repos\OOP2\CustomCollectionsTestApp\obj\Debug\CustomCollectionsTestApp.exe
+C:\Users\vikto\Documents\repos\OOP2\CustomCollectionsTestApp\obj\Debug\CustomCollectionsTestApp.pdb

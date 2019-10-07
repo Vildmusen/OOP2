@@ -7,36 +7,53 @@ using CustomDatastructures.Core;
 
 namespace CustomCollections
 {
-    // Make this class generic by adding a type-parameter to the class
-     //public delegate bool BeforeChange();
-    private deletagate void Eventhandler<TEventArgs>();
-    public class ObservableList<T> : IEnumerable<T>
+
+    public class ObservableList<T> : IEnumerable<T>, IObservable<T>
     {
-        // Declare an private variable, internalList, to work as 
-        // the internal data storage for the list
+        private RejectArgs<T> args;
         private List<T> internalList;
-        event EventHandler<ObservableList<T>> BeforeEvent;
+        public event EventHandler<RejectArgs<T>> BeforeChange;
+        public event EventHandler<ListChangedEventArgs<T>> Changed;
+
         public ObservableList()
         {
             internalList = new List<T>();
         }
+
         public void Add(T item)
         {
-            //this.beforeEvent += new EventHandler(this.internalList);
-            internalList.Add(item);
-
+            SendBeforeChangeEvent(Operation.Add, item);
+            
+            if (!args.IsOperationRejected)
+            {
+                internalList.Add(item);
+                Changed?.Invoke(this, new ListChangedEventArgs<T>(Operation.Add, item, internalList.Count));
+            }
         }
+
+
         public void Remove(T item)
         {
-            if (internalList != null)
+            SendBeforeChangeEvent(Operation.Remove, item);
+
+            if (!args.IsOperationRejected && internalList != null)
             {
                 internalList.Remove(item);
+                Changed?.Invoke(this, new ListChangedEventArgs<T>(Operation.Remove, item, internalList.Count));
             }
+
         }
         public bool Contains(T item)
         {
             return internalList.Contains(item);
         }
+
+        private void SendBeforeChangeEvent(Operation op, T item)
+        {
+            args = new RejectArgs<T>(op, item, internalList.Count);
+            BeforeChange?.Invoke(this, args);
+        }
+
         public IEnumerator<T> GetEnumerator()
         {
             return internalList.GetEnumerator();
@@ -47,6 +64,9 @@ namespace CustomCollections
             return ((IEnumerable)internalList).GetEnumerator();
         }
 
-
+        public IDisposable Subscribe(IObserver<T> observer)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using CustomCollections;
+using CustomDatastructures.Core;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,34 +17,35 @@ namespace CustomCollectionsTestApp
     /// </summary>
     public partial class TestApp : Form
     {
-        ObservableList<string> _list;
+        ObservableList<string> list;
+        Listener listener;
+
         public TestApp()
         {
             InitializeComponent();
-            _list = new ObservableList<string>();
+            list = new ObservableList<string>();
+            listener = new Listener();
+            listener.Subscribe(list);
         }
-
+        
         private void add_btn_Click(object sender, EventArgs e)
         {
-            _list.Add(input_txt.Text);
+            list.Add(input_txt.Text);
             updatelist();
         }
 
         private void remove_btn_Click(object sender, EventArgs e)
         {
-            _list.Remove(input_txt.Text);
+            list.Remove(input_txt.Text);
             updatelist();
         }
         private void updatelist()
         {
             listview.Items.Clear();
-            foreach (string item in _list)
+            foreach (string item in list)
             {
                 listview.Items.Add(item);
-
             }
         }
-
-        
     }
 }
