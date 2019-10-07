@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomCollections
 {
-    public class Listener
+    public class Listener 
     {
         public bool isRejecting = false;
 

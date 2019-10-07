@@ -30,16 +30,34 @@ namespace CustomCollectionsTestApp
 
         private void add_btn_Click(object sender, EventArgs e)
         {
-            list.Add(input_txt.Text);
-            updatelist();
+            try
+            {
+                if (list.TryAdd(input_txt.Text))
+                {
+                    updatelist();
+                    Errormessage.Text = "Sucessful operation";
+                }
+            }
+            catch (OperationRejectedException ex)
+            {
+                Errormessage.Text = ex.Message;
+            }
         }
 
         private void remove_btn_Click(object sender, EventArgs e)
         {
-            list.Remove(input_txt.Text);
-            updatelist();
+            try
+            {
+                list.Remove(input_txt.Text);             
+                Errormessage.Text = "Sucessful operation";
+            }
+            catch (Exception ex)
+            {
+                Errormessage.Text = ex.Message;
+            }
+          
         }
-        private void updatelist()
+        public void updatelist()
         {
             listview.Items.Clear();
             foreach (string item in list)
@@ -57,6 +75,15 @@ namespace CustomCollectionsTestApp
             else
             {
                 listener.isRejecting = false;
+            }
+        }
+
+        private void Contains_btn_Click(object sender, EventArgs e)
+        {
+            if (list.Contains(input_txt.Text))
+            {
+                Errormessage.Text = input_txt.Text + " finns i listan";
+
             }
         }
     }

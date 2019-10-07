@@ -19,30 +19,69 @@ namespace CustomCollections
         {
             internalList = new List<T>();
         }
+        public bool TryAdd(T item)
+        {
+            try
+            {
+                Add(item);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
 
+        }
         public void Add(T item)
         {
             SendBeforeChangeEvent(Operation.Add, item);
-            
+
             if (!args.IsOperationRejected)
             {
                 internalList.Add(item);
                 Changed?.Invoke(this, new ListChangedEventArgs<T>(Operation.Add, item, internalList.Count));
             }
+            else
+            {
+                throw new OperationRejectedException("Add was rejected");
+            }
         }
-
+        public bool TryRemove (T item)
+        {
+            try
+            {
+                Remove(item);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
 
         public void Remove(T item)
         {
             SendBeforeChangeEvent(Operation.Remove, item);
 
-            if (!args.IsOperationRejected && internalList != null)
+            if (!args.IsOperationRejected)
             {
-                internalList.Remove(item);
-                Changed?.Invoke(this, new ListChangedEventArgs<T>(Operation.Remove, item, internalList.Count));
+                if (Contains(item))
+                {
+                    internalList.Remove(item);
+                    Changed?.Invoke(this, new ListChangedEventArgs<T>(Operation.Remove, item, internalList.Count));
+                }
+                else
+                {
+                    throw new InvalidOperationException("Item was not found in the list");
+                }
+            }
+            else
+            {
+                throw new OperationRejectedException("Remove was rejected");
             }
 
         }
+
         public bool Contains(T item)
         {
             return internalList.Contains(item);
