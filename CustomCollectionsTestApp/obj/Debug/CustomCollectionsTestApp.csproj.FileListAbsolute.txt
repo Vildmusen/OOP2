@@ -1,0 +1,13 @@
+C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollectionsTestApp\bin\Debug\CustomCollectionsTestApp.exe.config
+C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollectionsTestApp\bin\Debug\CustomCollectionsTestApp.exe
+C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollectionsTestApp\bin\Debug\CustomCollectionsTestApp.pdb
+C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollectionsTestApp\bin\Debug\CustomCollections.dll
+C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollectionsTestApp\bin\Debug\CustomDatastructures.Core.dll
+C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollectionsTestApp\bin\Debug\CustomCollections.pdb
+C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollectionsTestApp\obj\Debug\CustomCollectionsTestApp.csprojAssemblyReference.cache
+C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollectionsTestApp\obj\Debug\CustomCollectionsTestApp.Properties.Resources.resources
+C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollectionsTestApp\obj\Debug\CustomCollectionsTestApp.TestApp.resources
+C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollectionsTestApp\obj\Debug\CustomCollectionsTestApp.csproj.GenerateResource.cache
+C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollectionsTestApp\obj\Debug\CustomCollectionsTestApp.csproj.CopyComplete
+C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollectionsTestApp\obj\Debug\CustomCollectionsTestApp.exe
+C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollectionsTestApp\obj\Debug\CustomCollectionsTestApp.pdb

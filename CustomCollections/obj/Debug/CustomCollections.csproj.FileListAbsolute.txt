@@ -1,0 +1,9 @@
+C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollections\bin\Debug\CustomCollections.dll
+C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollections\bin\Debug\CustomCollections.pdb
+C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollections\bin\Debug\CustomDatastructures.Core.dll
+C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollections\bin\Debug\CustomDatastructures.Tests.dll
+C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollections\bin\Debug\nunit.framework.dll
+C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollections\obj\Debug\CustomCollections.csprojAssemblyReference.cache
+C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollections\obj\Debug\CustomCollections.csproj.CopyComplete
+C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollections\obj\Debug\CustomCollections.dll
+C:\Users\matti\Desktop\CustomCollectionsWithTests\CustomCollections\obj\Debug\CustomCollections.pdb
