@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomCollections
 {
-    public class Listener
+    public class Listener 
     {
         public bool isRejecting = false;
 
@@ -19,12 +19,7 @@ namespace CustomCollections
 
         private void List_BeforeChange<T>(object sender, RejectArgs<T> e)
         {
-<<<<<<< HEAD
-            bool checkValue = false;
-            if (checkValue)
-=======
             if (isRejecting)
->>>>>>> fe8f5d8b1dbcf7e1e21f9a1bc5f6e23e167f60a0
             {
                 e.RejectOperation();
             }
