@@ -79,6 +79,7 @@
             this.reject_chk.TabIndex = 4;
             this.reject_chk.Text = "Reject Changes";
             this.reject_chk.UseVisualStyleBackColor = true;
+            this.reject_chk.CheckedChanged += new System.EventHandler(this.reject_chk_CheckedChanged);
             // 
             // TestApp
             // 

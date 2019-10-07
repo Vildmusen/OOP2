@@ -9,6 +9,8 @@ namespace CustomCollections
 {
     public class Listener
     {
+        public bool isRejecting = false;
+
         public void Subscribe<T>(ObservableList<T> list)
         {
             list.BeforeChange += List_BeforeChange;
@@ -17,8 +19,7 @@ namespace CustomCollections
 
         private void List_BeforeChange<T>(object sender, RejectArgs<T> e)
         {
-            bool checkValue = true;
-            if (checkValue)
+            if (isRejecting)
             {
                 e.RejectOperation();
             }

@@ -47,5 +47,17 @@ namespace CustomCollectionsTestApp
                 listview.Items.Add(item);
             }
         }
+
+        private void reject_chk_CheckedChanged(object sender, EventArgs e)
+        {
+            if(reject_chk.Checked)
+            {
+                listener.isRejecting = true;
+            }
+            else
+            {
+                listener.isRejecting = false;
+            }
+        }
     }
 }
