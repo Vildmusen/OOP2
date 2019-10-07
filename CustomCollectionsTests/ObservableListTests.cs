@@ -104,17 +104,29 @@ namespace CustomCollections.Tests
         public void Remove_Reject_Throws_Correct_Exception()
         {
             var testObj = new Object();
-
             // Add it before try to remove it otherwise 
             // another exception will be thrown
             Instance.Add(testObj);
+            Instance.BeforeChange += (sender, args) => args.RejectOperation();
 
-            Instance.BeforeChange +=
-                (sender, args) => args.RejectOperation();
+            try
+            {
+                Instance.Remove(testObj);
+            }
+            catch (InvalidOperationException e)
+            {
+                if (e.GetType().BaseType == typeof(InvalidOperationException))
+                {
+                    return;
 
-            var ex = Assert.ThrowsException<InvalidOperationException>(() => Instance.Remove(testObj));
-
-            Assert.IsNotInstanceOfType(ex, typeof(InvalidOperationException));
+                }
+                else
+                {
+                    Assert.Fail("When an operation is rejected, the type of the exception should be a subtype of InvalidOperationException.");
+                    return;
+                }
+            }
+            Assert.Fail("When an operation is rejected, the Remove method should throw an exception.");
         }
 
         [TestMethod]
@@ -246,6 +258,7 @@ namespace CustomCollections.Tests
             Assert.AreEqual(Instance.Count(), result.Item3);
         }
 
+
         [TestMethod]
         public void Test_ChangeEventArgs_Remove()
         {
@@ -290,7 +303,7 @@ namespace CustomCollections.Tests
                         var x = listArgs;
 
                         // Checks that the thrown exception is not a RejectableEventArgs
-                        Assert.IsNotInstanceOfType(x, typeof(RejectableEventArgs<object>));
+                        Assert.IsInstanceOfType(x, typeof(RejectableEventArgs<object>));
                     }
                     catch (Exception ex)
                     {

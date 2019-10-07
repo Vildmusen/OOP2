@@ -19,6 +19,7 @@ namespace CustomCollections
         {
             internalList = new List<T>();
         }
+
         public bool TryAdd(T item)
         {
             try
@@ -30,8 +31,8 @@ namespace CustomCollections
                 return false;
             }
             return true;
-
         }
+
         public void Add(T item)
         {
             SendBeforeChangeEvent(Operation.Add, item);
@@ -46,6 +47,7 @@ namespace CustomCollections
                 throw new OperationRejectedException("Add was rejected");
             }
         }
+
         public bool TryRemove (T item)
         {
             try

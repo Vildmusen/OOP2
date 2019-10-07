@@ -50,7 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Listener.cs" />
     <Compile Include="ObservableList.cs" />
     <Compile Include="OperationRejectedException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

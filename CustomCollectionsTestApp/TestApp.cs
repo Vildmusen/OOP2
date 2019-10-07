@@ -18,14 +18,13 @@ namespace CustomCollectionsTestApp
     public partial class TestApp : Form
     {
         ObservableList<string> list;
-        Listener listener;
+        bool isRejecting = false;
 
         public TestApp()
         {
             InitializeComponent();
             list = new ObservableList<string>();
-            listener = new Listener();
-            listener.Subscribe(list);
+            Subscribe(list);
         }
 
         private void add_btn_Click(object sender, EventArgs e)
@@ -34,7 +33,6 @@ namespace CustomCollectionsTestApp
             {
                 if (list.TryAdd(input_txt.Text))
                 {
-                    updatelist();
                     Errormessage.Text = "Sucessful operation";
                 }
             }
@@ -48,15 +46,17 @@ namespace CustomCollectionsTestApp
         {
             try
             {
-                list.Remove(input_txt.Text);             
-                Errormessage.Text = "Sucessful operation";
+                if (list.TryRemove(input_txt.Text))
+                {
+                    Errormessage.Text = "Sucessful operation";
+                }
             }
             catch (Exception ex)
             {
                 Errormessage.Text = ex.Message;
             }
-          
         }
+
         public void updatelist()
         {
             listview.Items.Clear();
@@ -70,11 +70,11 @@ namespace CustomCollectionsTestApp
         {
             if (reject_chk.Checked)
             {
-                listener.isRejecting = true;
+                isRejecting = true;
             }
             else
             {
-                listener.isRejecting = false;
+                isRejecting = false;
             }
         }
 
@@ -85,6 +85,25 @@ namespace CustomCollectionsTestApp
                 Errormessage.Text = input_txt.Text + " finns i listan";
 
             }
+        }
+
+        public void Subscribe<T>(ObservableList<T> observer)
+        {
+            observer.BeforeChange += List_BeforeChange;
+            observer.Changed += List_Changed;
+        }
+
+        private void List_BeforeChange<T>(object sender, RejectArgs<T> e)
+        {
+            if (isRejecting)
+            {
+                e.RejectOperation();
+            }
+        }
+
+        private void List_Changed<T>(object sender, ListChangedEventArgs<T> e)
+        {
+            updatelist();
         }
     }
 }
