@@ -18,7 +18,6 @@ namespace CustomCollectionsTestApp
     public partial class TestApp : Form
     {
         ObservableList<string> list;
-        bool isRejecting = false;
 
         public TestApp()
         {
@@ -84,7 +83,7 @@ namespace CustomCollectionsTestApp
             observer.Changed += List_Changed;
         }
 
-        private void List_BeforeChange<T>(object sender, RejectArgs<T> e)
+        private void List_BeforeChange<T>(object sender, RejectableEventArgs<T> e)
         {
             if (e.Value.ToString().Length > 7 ||
                 e.Value.ToString().ToUpper() == e.Value.ToString() ||

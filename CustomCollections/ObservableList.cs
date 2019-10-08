@@ -8,11 +8,11 @@ using CustomDatastructures.Core;
 namespace CustomCollections
 {
 
-    public class ObservableList<T> : IEnumerable<T>, IObservable<T>
+    public class ObservableList<T> : IEnumerable<T>, IObservable<T>, IObservableList<T>
     {
         private RejectArgs<T> args;
         private List<T> internalList;
-        public event EventHandler<RejectArgs<T>> BeforeChange;
+        public event EventHandler<RejectableEventArgs<T>> BeforeChange;
         public event EventHandler<ListChangedEventArgs<T>> Changed;
 
         public ObservableList()
@@ -22,7 +22,13 @@ namespace CustomCollections
 
         public bool TryAdd(T item)
         {
-            Add(item);
+            try
+            {
+                Add(item);
+            } catch (Exception)
+            {
+                return false;
+            }
             return true;
         }
 
@@ -41,9 +47,16 @@ namespace CustomCollections
             }
         }
 
-        public bool TryRemove (T item)
+        public bool TryRemove(T item)
         {
-            Remove(item);
+            try
+            {
+                Remove(item);
+            }
+            catch (Exception)
+            {
+                return false;
+            }
             return true;
         }
 

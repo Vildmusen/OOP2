@@ -95,9 +95,9 @@ namespace CustomCollections.Tests
             Instance.BeforeChange +=
                 (sender, args) => args.RejectOperation();
 
-            var ex = Assert.ThrowsException<InvalidOperationException>(() => Instance.Add(testObj));
+            var ex = Assert.ThrowsException<OperationRejectedException>(() => Instance.Add(testObj));
 
-            Assert.IsInstanceOfType(ex, typeof(InvalidOperationException));
+            Assert.IsInstanceOfType(ex, typeof(OperationRejectedException));
         }
 
         [TestMethod]
