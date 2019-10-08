@@ -36,7 +36,7 @@ namespace CustomCollectionsTestApp
                     Errormessage.Text = "Sucessful operation";
                 }
             }
-            catch (OperationRejectedException ex)
+            catch (Exception ex)
             {
                 Errormessage.Text = ex.Message;
             }
@@ -65,25 +65,16 @@ namespace CustomCollectionsTestApp
                 listview.Items.Add(item);
             }
         }
-
-        private void reject_chk_CheckedChanged(object sender, EventArgs e)
-        {
-            if (reject_chk.Checked)
-            {
-                isRejecting = true;
-            }
-            else
-            {
-                isRejecting = false;
-            }
-        }
-
+        
         private void Contains_btn_Click(object sender, EventArgs e)
         {
             if (list.Contains(input_txt.Text))
             {
                 Errormessage.Text = input_txt.Text + " finns i listan";
-
+            }
+            else
+            {
+                Errormessage.Text = input_txt.Text + " finns inte i listan";
             }
         }
 
@@ -95,7 +86,10 @@ namespace CustomCollectionsTestApp
 
         private void List_BeforeChange<T>(object sender, RejectArgs<T> e)
         {
-            if (isRejecting)
+            if (e.Value.ToString().Length > 7 ||
+                e.Value.ToString().ToUpper() == e.Value.ToString() ||
+                e.Value.ToString() == "" ||
+                (e.Count >= 10 && e.Operation == Operation.Add))
             {
                 e.RejectOperation();
             }

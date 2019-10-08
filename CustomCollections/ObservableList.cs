@@ -22,14 +22,7 @@ namespace CustomCollections
 
         public bool TryAdd(T item)
         {
-            try
-            {
-                Add(item);
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            Add(item);
             return true;
         }
 
@@ -50,14 +43,7 @@ namespace CustomCollections
 
         public bool TryRemove (T item)
         {
-            try
-            {
-                Remove(item);
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            Remove(item);
             return true;
         }
 
@@ -74,7 +60,7 @@ namespace CustomCollections
                 }
                 else
                 {
-                    throw new InvalidOperationException("Item was not found in the list");
+                    throw new InvalidOperationException(item + " was not found in the list");
                 }
             }
             else
