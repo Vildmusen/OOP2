@@ -26,14 +26,17 @@ namespace CustomCollectionsTestApp
             Subscribe(list);
         }
 
+        /// <summary>
+        /// Tries to add an item to the list. If an exception is catched, a label text is updated to indicate this.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void add_btn_Click(object sender, EventArgs e)
         {
             try
             {
-                if (list.TryAdd(input_txt.Text))
-                {
-                    Errormessage.Text = "Sucessful operation";
-                }
+                list.Add(input_txt.Text);
+                Errormessage.Text = "Sucessful operation";
             }
             catch (Exception ex)
             {
@@ -41,14 +44,17 @@ namespace CustomCollectionsTestApp
             }
         }
 
+        /// <summary>
+        /// Tries to remove an item from the list. If an exception is catched, a label text is updated to indicate this.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void remove_btn_Click(object sender, EventArgs e)
         {
             try
             {
-                if (list.TryRemove(input_txt.Text))
-                {
-                    Errormessage.Text = "Sucessful operation";
-                }
+                list.Remove(input_txt.Text);
+                Errormessage.Text = "Sucessful operation";
             }
             catch (Exception ex)
             {
@@ -56,7 +62,10 @@ namespace CustomCollectionsTestApp
             }
         }
 
-        public void updatelist()
+        /// <summary>
+        /// Clears the listview and then adds all items in "list".
+        /// </summary>
+        public void updatelist<T>(object sender, ListChangedEventArgs<T> e)
         {
             listview.Items.Clear();
             foreach (string item in list)
@@ -77,12 +86,23 @@ namespace CustomCollectionsTestApp
             }
         }
 
-        public void Subscribe<T>(ObservableList<T> observer)
+        /// <summary>
+        /// Subscribes to the events "BeforeChange" and "Changed" from the argument "list"
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        public void Subscribe<T>(ObservableList<T> list)
         {
-            observer.BeforeChange += List_BeforeChange;
-            observer.Changed += List_Changed;
+            list.BeforeChange += List_BeforeChange;
+            list.Changed += updatelist;
         }
 
+        /// <summary>
+        /// Method to run at event "BeforeChange". Rejects the operation according to the conditions in the if-statement.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void List_BeforeChange<T>(object sender, RejectableEventArgs<T> e)
         {
             if (e.Value.ToString().Length > 7 ||
@@ -92,11 +112,6 @@ namespace CustomCollectionsTestApp
             {
                 e.RejectOperation();
             }
-        }
-
-        private void List_Changed<T>(object sender, ListChangedEventArgs<T> e)
-        {
-            updatelist();
         }
     }
 }

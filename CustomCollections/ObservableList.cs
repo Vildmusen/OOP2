@@ -7,7 +7,10 @@ using CustomDatastructures.Core;
 
 namespace CustomCollections
 {
-
+    /// <summary>
+    /// Implementation of generic list with add, tryadd, remove, tryremove and contians.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class ObservableList<T> : IEnumerable<T>, IObservable<T>, IObservableList<T>
     {
         private RejectArgs<T> args;
@@ -20,6 +23,11 @@ namespace CustomCollections
             internalList = new List<T>();
         }
 
+        /// <summary>
+        /// Tries to add an item of type T to the list. 
+        /// </summary>
+        /// <param name="item">item to perform operation with</param>
+        /// <returns>Returns true if succesful and false if unsuccesful.</returns>
         public bool TryAdd(T item)
         {
             try
@@ -32,6 +40,10 @@ namespace CustomCollections
             return true;
         }
 
+        /// <summary>
+        /// Tries to add an item of type T to the list. Throws exception "OperationRejectedException" if rejected.
+        /// </summary>
+        /// <param name="item">item to perform operation with</param>
         public void Add(T item)
         {
             SendBeforeChangeEvent(Operation.Add, item);
@@ -47,6 +59,11 @@ namespace CustomCollections
             }
         }
 
+        /// <summary>
+        /// Tries to remove an item of type T from the list.
+        /// </summary>
+        /// <param name="item">item to perform operation with</param>
+        /// <returns>Returns true if succesful and false if unsuccesful.</returns>
         public bool TryRemove(T item)
         {
             try
@@ -60,6 +77,10 @@ namespace CustomCollections
             return true;
         }
 
+        /// <summary>
+        /// Tries to removes an item of type T from the list. Throws exception "OperationRejectedException" if rejected.
+        /// </summary>
+        /// <param name="item">item to perform operation with</param>
         public void Remove(T item)
         {
             SendBeforeChangeEvent(Operation.Remove, item);
@@ -83,11 +104,21 @@ namespace CustomCollections
 
         }
 
+        /// <summary>
+        /// Checks if item of type T i is the list.
+        /// </summary>
+        /// <param name="item">item to perform operation with</param>
+        /// <returns></returns>
         public bool Contains(T item)
         {
             return internalList.Contains(item);
         }
 
+        /// <summary>
+        /// Invokes the event BeforeChange after modifiyng its argument "args" with the appropriate information.
+        /// </summary>
+        /// <param name="op">Operation to use.</param>
+        /// <param name="item">item to be used with operation.</param>
         private void SendBeforeChangeEvent(Operation op, T item)
         {
             args = new RejectArgs<T>(op, item, internalList.Count);

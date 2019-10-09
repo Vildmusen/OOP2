@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace CustomCollections
 {
+    /// <summary>
+    /// Implementation of EventAargs inheriting RejectableEventArgs.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class RejectArgs<T> : RejectableEventArgs<T>
     {
         private bool isRejected = false;
