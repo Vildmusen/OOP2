@@ -61,19 +61,7 @@ namespace CustomCollectionsTestApp
                 Errormessage.Text = ex.Message;
             }
         }
-
-        /// <summary>
-        /// Clears the listview and then adds all items in "list".
-        /// </summary>
-        public void updatelist<T>(object sender, ListChangedEventArgs<T> e)
-        {
-            listview.Items.Clear();
-            foreach (string item in list)
-            {
-                listview.Items.Add(item);
-            }
-        }
-        
+                
         private void Contains_btn_Click(object sender, EventArgs e)
         {
             if (list.Contains(input_txt.Text))
@@ -95,6 +83,18 @@ namespace CustomCollectionsTestApp
         {
             list.BeforeChange += List_BeforeChange;
             list.Changed += updatelist;
+        }
+
+        /// <summary>
+        /// Clears the listview and then adds all items in "list".
+        /// </summary>
+        public void updatelist<T>(object sender, ListChangedEventArgs<T> e)
+        {
+            listview.Items.Clear();
+            foreach (string item in list)
+            {
+                listview.Items.Add(item);
+            }
         }
 
         /// <summary>
